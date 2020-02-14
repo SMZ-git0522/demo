@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>我的网站移动版</title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+		<!-- bootstrap main js -->
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<!-- fileinput main js -->
+		<script type="text/javascript" src="bootstrap-fileinput-master/js/fileinput.min.js"></script>
+		<!-- chn language js -->
+		<script type="text/javascript" src="bootstrap-fileinput-master/js/locales/zh.js"></script>
+		<!-- bootstrap theme -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<!-- fileinput theme -->
+		<link rel="stylesheet" type="text/css" href="bootstrap-fileinput-master/css/fileinput.min.css">
+		<script type="text/javascript" src="js/exif.js" ></script>
+		<link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+		<link rel="stylesheet" href="css/common.css">
+		<script src="js/setfontsize.js"></script>
+		<link rel="stylesheet" href="css/lhphone.css">
+		<style>
+			#res read{
+				margin-top: 6%;
+				margin-left: 7%;
+				width: 93%;
+				font-size: 14px;
+				height: 40%;
+				line-height: 1.5;
+			}
+
+			/* The Modal (background) */
+			.modal {
+				display: none; /* Hidden by default */
+				position: fixed; /* Stay in place */
+				z-index: 1; /* Sit on top */
+				padding-top: 100px; /* Location of the box */
+				left: 0;
+				top: 0;
+				width: 100%; /* Full width */
+				height: 100%; /* Full height */
+				overflow: auto; /* Enable scroll if needed */
+				background-color: rgb(0,0,0); /* Fallback color */
+				background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+			}
+
+			/* Modal Content */
+			.modal-content {
+				position: relative;
+				background-color: #fefefe;
+				margin: auto;
+				padding: 0;
+				border: 1px solid #888;
+				width: 80%;
+				box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+				-webkit-animation-name: animatetop;
+				-webkit-animation-duration: 0.4s;
+				animation-name: animatetop;
+				animation-duration: 0.4s
+			}
+
+			/* Add Animation */
+			@-webkit-keyframes animatetop {
+				from {top:-300px; opacity:0}
+				to {top:0; opacity:1}
+			}
+
+			@keyframes animatetop {
+				from {top:-300px; opacity:0}
+				to {top:0; opacity:1}
+			}
+
+			/* The Close Button */
+			.close {
+				color: white;
+				float: right;
+				font-size: 28px;
+				font-weight: bold;
+			}
+
+			.close:hover,
+			.close:focus {
+				color: #000;
+				text-decoration: none;
+				cursor: pointer;
+			}
+			.yuyinclose {
+				color: white;
+				float: right;
+				font-size: 28px;
+				font-weight: bold;
+			}
+
+			.yuyinclose:hover,
+			.yuyinclose:focus {
+				color: #000;
+				text-decoration: none;
+				cursor: pointer;
+			}
+			.idcardclose {
+				color: white;
+				float: right;
+				font-size: 28px;
+				font-weight: bold;
+			}
+
+			.idcardclose:hover,
+			.idcardclose:focus {
+				color: #000;
+				text-decoration: none;
+				cursor: pointer;
+			}
+			.daochuclose {
+				color: white;
+				float: right;
+				font-size: 28px;
+				font-weight: bold;
+			}
+
+			.daochuclose:hover,
+			.daochuclose:focus {
+				color: #000;
+				text-decoration: none;
+				cursor: pointer;
+			}
+
+			.modal-header {
+				padding: 2px 16px;
+				background-color: #5cb85c;
+				color: white;
+			}
+
+			.modal-body {padding: 2px 16px;}
+
+			.yongyin {
+				width:100px;
+				text-align:center;
+				line-height:100%;
+				padding:0.3em;
+				font:16px Arial,sans-serif bold;
+				font-style:normal;
+				text-decoration:none;
+				margin:2px;
+				vertical-align:text-bottom;
+				zoom:1;
+				outline:none;
+				font-size-adjust:none;
+				font-stretch:normal;
+				border-radius:50px;
+				box-shadow:0px 1px 2px rgba(0,0,0,0.2);
+				text-shadow:0px 1px 1px rgba(0,0,0,0.3);
+				color:#fefee9;
+				border:0.2px solid #2299ff;
+				background-repeat:repeat;
+				background-size:auto;
+				background-origin:padding-box;
+				background-clip:padding-box;
+				background-color:#5cb85c;
+			}
+
+			.yongyin:hover {
+				background: #5cb85c;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<!-- banner -->
+			<section id="banner">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"> <img class="slider_img" src="img/lunbotu-1.jpg"> </div>
+						<div class="swiper-slide"> <img class="slider_img" src="img/lunbotu-2.jpg"> </div>
+					</div>
+					<div class="swiper-pagination"></div>
+				</div>
+			</section>
+			<section>
+				<div class="index_market_box">
+					<div class="size-40 color-333 text-center">文字识别 · 软件</div>
+					<div class="title_down_line"></div>
+					<div class="index_market">
+						<div class="index_market_item"> <img id="wenzishibie" class="index_market_img" src="img/servicea.png" alt="">
+							<h2 class="size-30 color-333">文字识别</h2>
+							<span class="size-22 color-666">图片识别文字</span> </div>
+						<div class="index_market_item"> <img id ="daochu" class="index_market_img" src="img/serviceb.png" alt="">
+							<h2 class="size-30 color-333">导出word</h2>
+							<span class="size-22 color-666">图片识别文字后导出word</span> </div>
+						<div class="index_market_item"> <img id="yuyinlangdu" class="index_market_img" src="img/serviced.png" alt="">
+							<h2 class="size-30 color-333">语音朗读</h2>
+							<span class="size-22 color-666">朗读出</span> </div>
+						<div class="index_market_item"> <img id="idcard" class="index_market_img" src="img/servicea.png" alt="">
+							<h2 class="size-30 color-333">证件识别</h2>
+							<span class="size-22 color-666">识别身份证信息</span> </div>
+						<div class="index_market_item"> <img id="fanyi" class="index_market_img" src="img/serviceb.png" alt="">
+							<h2 class="size-30 color-333">有道翻译</h2>
+							<span class="size-22 color-666">拍照中文翻译英文</span> </div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- 文字识别 -->
+		<div id="wenzishibieModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">x</span>
+					<h2>图片识别文字</h2>
+				</div>
+				<div class="modal-body">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<input type="file" name="file" id="file1" class="file">
+						</div>
+					</div>
+					<h2>解析结果：</h2>
+					<div style=" overflow:scroll; width:250px; height:200px;">
+						<span id="res"></span>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<!-- 导出word -->
+		<div id="daochuModal" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="daochuclose">x</span>
+					<h2>图片识别文字</h2>
+				</div>
+				<div class="modal-body">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<input type="file" name="file" id="file-daochu" class="file">
+						</div>
+					</div>
+					<div style=" overflow:scroll; width:250px; height:200px;">
+						<span id="导出"></span>
+					</div>
+					<button type="button" class="yongyin" onclick='download()'>下载</button>
+				</div>
+			</div>
+
+		</div>
+		<!-- 语音朗读 -->
+		<div id="yuyinlangduModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="yuyinclose">x</span>
+					<h2>语音朗读</h2>
+				</div>
+				<div class="modal-body">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<input type="file" name="file" id="file2" class="file" onchange="selectFileImage(this);">
+						</div>
+					</div>
+					<h2>解析结果：</h2>
+					<div style=" overflow:scroll; width:250px; height:200px;">
+						<span id="read"></span>
+					</div>
+
+					<button type="button" class="yongyin" onclick='play()' id='playBtn'>准备中</button>
+					<button type="button" class="yongyin" onclick='pause()'>暂停</button>
+					<button type="button" class="yongyin" onclick='cancel()'>取消</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- 身份识别 -->
+		<div id="idcardModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="idcardclose">x</span>
+					<h2>身份识别</h2>
+				</div>
+				<div class="modal-body">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<input type="file" name="file_idcard" id="file3" class="file" multiple data-min-file-count="2">
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<h4>身份证识别结果：</h4>
+						<div class="col-lg-6">
+							正面：<br>姓名：<span id="res_name"></span><br>
+							性别：<span id="res_sex"></span>&nbsp;&nbsp;<br>民族：<span id="res_nation"></span><br>
+							出生：<span id="res_bera"></span><br>
+							住址：<span id="res_address"></span><br>
+							公民身份证号码：<span id="res_cardNumber"></span>
+						</div>
+						<div class="col-lg-6">
+							背面：<br>签发日期：<span id="res_start"></span>&nbsp;&nbsp;<br>失效日期：<span id="res_end"></span><br>
+							签发机关：<span id="res_office"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 有道翻译 -->
+		<div id="fanyiModal" class="modal">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="fanyiclose">x</span>
+					<h2>翻译</h2>
+				</div>
+				<div class="modal-body">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<input type="file" name="file" id="file-fanyi" class="file">
+						</div>
+					</div>
+					<div>
+						<select id="from">
+							<option value ="auto">源语言：自动识别</option>
+							<option value ="zh-CHS">源语言：中文</option>
+							<option value ="en">源语言：英文</option>
+							<option value="ja">源语言：日文</option>
+						</select>
+						—
+						<select id="to">
+							<option value ="zh-CHS">目标语言：中文</option>
+							<option value ="en">目标语言：英文</option>
+							<option value="ja">目标语言：日文</option>
+						</select>
+					</div>
+					<div style=" overflow:scroll; width:250px; height:200px;">
+						<span id="translation"></span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<script src="js/common.js"></script>
+		<script src="js/swiper-3.4.2.min.js"></script>
+		<script src="js/toast.js"></script>
+		<script type="text/javascript">
+			var mySwiper = new Swiper('.swiper-container', {
+				direction: 'horizontal',
+				loop: true,
+				autoplay: 5000,
+				speed: 300,
+				autoplayDisableOnInteraction: false,
+				// 如果需要分页器
+				pagination: '.swiper-pagination',
+			});
+
+			// 点击切换案例类型
+			for(var i = 1; i < 9; i++) {
+				var img = new Image();
+				img.src = "img/bg_" + i + ".png";
+			}
+			$('.index_case_box .lf_menu').find('li').click(function() {
+				var index = $(this).index();
+				var isActive = $(this).hasClass('active');
+				var cont_ul = $(this).parent().siblings('ul.rt_cont');
+				if(!isActive) {
+					for(var i = 0; i < cont_ul.length; i += 1) {
+						if(!cont_ul.eq(i).hasClass('hide')) {
+							cont_ul.eq(i).addClass('hide');
+						}
+					}
+
+					$(this).addClass('active');
+					$(this).siblings().removeClass('active');
+					cont_ul.eq(index).removeClass('hide');
+
+					// 设置背景
+					$('.index_case_box').css({
+						'background': 'url(img/bg_' + (index + 1) + '.png)',
+						'background-size': '100% 100%',
+						'background-position': 'center',
+						'background-repeat': 'no-repeat'
+					});
+				}
+			});
+		</script>
+
+		<script type="text/javascript">
+			// Get the modal
+			var modal = document.getElementById('wenzishibieModal');
+			var yuyinmodal = document.getElementById('yuyinlangduModal');
+			var idcardmodal = document.getElementById('idcardModal');
+			var daochumodal = document.getElementById('daochuModal');
+			var fanyimodal = document.getElementById('fanyiModal');
+			// Get the button that opens the modal
+			var btn = document.getElementById("wenzishibie");
+			var yuyinbtn = document.getElementById("yuyinlangdu");
+			var idcardbtn = document.getElementById("idcard");
+			var daochubtn = document.getElementById("daochu");
+			var fanyibtn = document.getElementById("fanyi");
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+			var yuyinspan = document.getElementsByClassName("yuyinclose")[0];
+			var idcardspan = document.getElementsByClassName("idcardclose")[0];
+			var daochuspan = document.getElementsByClassName("daochuclose")[0];
+			var fanyispan = document.getElementsByClassName("fanyiclose")[0];
+			// When the user clicks the button, open the modal
+			btn.onclick = function() {
+				modal.style.display = "block";
+			}
+			yuyinbtn.onclick = function() {
+				yuyinmodal.style.display = "block";
+			}
+			idcardbtn.onclick = function() {
+				idcardmodal.style.display = "block";
+			}
+			daochubtn.onclick = function() {
+				daochumodal.style.display = "block";
+			}
+			fanyibtn.onclick = function() {
+				fanyimodal.style.display = "block";
+			}
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+				modal.style.display = "none";
+			}
+			yuyinspan.onclick = function() {
+				yuyinmodal.style.display = "none";
+			}
+			idcardspan.onclick = function() {
+				idcardmodal.style.display = "none";
+			}
+			daochuspan.onclick = function() {
+				daochumodal.style.display = "none";
+			}
+			fanyispan.onclick = function() {
+				fanyimodal.style.display = "none";
+			}
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+				if (event.target == yuyinmodal) {
+					yuyinmodal.style.display = "none";
+				}
+				if (event.target == idcardmodal) {
+					idcardmodal.style.display = "none";
+				}
+				if (event.target == daochumodal) {
+					daochumodal.style.display = "none";
+				}
+				if (event.target == fanyimodal) {
+					fanyimodal.style.display = "none";
+				}
+			}
+		</script>
+		<!-- 文字识别js -->
+		<script>
+			$("#file1").fileinput({
+				uploadUrl: '/ocr', //你必须在这里设置一个有效的URL，否则你会得到一个错误
+				uploadAsync: true, //AJAX设置同步，异步的上传方式 （同步）
+				allowedFileExtensions: ['jpg', 'png', 'gif'],//文件类型
+				showUpload: true, //是否显示上传按钮
+				browseClass: "btn btn-primary", //按钮样式
+				showRemove : true, //显示移除按钮
+				dropZoneEnabled: true,//是否显示拖拽区域
+				overwriteInitial: false,
+				//maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+				maxFilesNum: 10,
+				maxFileCount: 1, //表示允许同时上传的最大文件个数
+				minFileCount: 0,	//最少文件
+				validateInitialCount:false//异步上传返回结果处理
+			}).on('fileuploaded', function(event, data, previewId, index) {
+				// alert(JSON.stringify(data));
+				$('#res').text("");
+				var res_arr = data.response.words_result;
+				for(var key in res_arr){
+					$('#res').append(res_arr[key].words + "<br/>");
+				}
+				// console.log(JSON.stringify(data));
+			});
+
+			$("#file2").fileinput({
+				uploadUrl: '/ocr', //你必须在这里设置一个有效的URL，否则你会得到一个错误
+				uploadAsync: true, //AJAX设置同步，异步的上传方式 （同步）
+				allowedFileExtensions: ['jpg', 'png', 'gif'],//文件类型
+				showUpload: true, //是否显示上传按钮
+				browseClass: "btn btn-primary", //按钮样式
+				showRemove : true, //显示移除按钮
+				dropZoneEnabled: true,//是否显示拖拽区域
+				overwriteInitial: false,
+				//maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+				maxFilesNum: 10,
+				maxFileCount: 1, //表示允许同时上传的最大文件个数
+				minFileCount: 0,	//最少文件
+				validateInitialCount:false//异步上传返回结果处理
+			}).on('fileuploaded', function(event, data, previewId, index) {
+				// alert(JSON.stringify(data));
+				$('#read').text("");
+				var res_arr = data.response.words_result;
+				for(var key in res_arr){
+					$('#read').append(res_arr[key].words + "<br/>");
+				}
+				tts();
+				// console.log(JSON.stringify(data));
+			});
+			$("#file-daochu").fileinput({
+				uploadUrl: '/export', //你必须在这里设置一个有效的URL，否则你会得到一个错误
+				uploadAsync: true, //AJAX设置同步，异步的上传方式 （同步）
+				allowedFileExtensions: ['jpg', 'png', 'gif'],//文件类型
+				showUpload: true, //是否显示上传按钮
+				browseClass: "btn btn-primary", //按钮样式
+				showRemove : true, //显示移除按钮
+				dropZoneEnabled: true,//是否显示拖拽区域
+				overwriteInitial: false,
+				//maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+				maxFilesNum: 10,
+				maxFileCount: 1, //表示允许同时上传的最大文件个数
+				minFileCount: 0,	//最少文件
+				validateInitialCount:false//异步上传返回结果处理
+			}).on('fileuploaded', function(event, data, previewId, index) {
+				var res_arr = data.response.res;
+
+					$('#daochu').append(res_arr);
+
+			});
+		</script>
+		<!-- 语音朗读js -->
+		<script type="text/javascript" src="js/baidu_tts_cors.js"></script>
+		<!-- 有道翻译 -->
+		<script type="text/javascript">
+			$("#file-fanyi").fileinput({
+				uploadUrl: '/questWord', //你必须在这里设置一个有效的URL，否则你会得到一个错误
+				uploadAsync: true, //AJAX设置同步，异步的上传方式 （同步）
+				allowedFileExtensions: ['jpg', 'png', 'gif'],//文件类型
+				showUpload: true, //是否显示上传按钮
+				browseClass: "btn btn-primary", //按钮样式
+				showRemove : true, //显示移除按钮
+				dropZoneEnabled: true,//是否显示拖拽区域
+				overwriteInitial: false,
+				//maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+				maxFilesNum: 10,
+				maxFileCount: 1, //表示允许同时上传的最大文件个数
+				minFileCount: 0,	//最少文件
+				validateInitialCount:false,//异步上传返回结果处理
+				uploadExtraData:function (previewId, index) {
+					var data = {
+						from : $("#from option:selected").val(),
+						to:$("#to option:selected").val()
+					};
+					return data;
+				}
+			}).on('fileuploaded', function(event, data, previewId, index) {
+				var res_arr = data.response.translation;
+
+				$('#translation').append(res_arr);
+
+			});
+		</script>
+		<!-- 身份识别js -->
+		<script type="text/javascript">
+			//002.身份证识别
+			$("#file3").fileinput({
+				uploadUrl: '/idCard',
+				uploadAsync: false,
+				allowedFileExtensions: ['jpg', 'png', 'gif'],
+				//browseClass: "btn btn-primary", //按钮样式
+				//maxFileSize:0,//单位为kb，如果为0表示不限制文件大小
+				maxFileCount: 2,
+				minFileCount: 2,
+				layoutTemplates: {
+					actionUpload: ''	//去掉略缩图中的上传按钮，去掉哪个就设置哪个
+				},
+				dropZoneTitle: '选择两张图片，第一张正面，第二张国徽面'
+			}).on('filebatchuploadsuccess', function(event, data, previewId, index) {
+				var res_b_arr = data.response.back;		//背面
+				var res_f_arr = data.response.front;	//正面
+				$('#res_name').text(res_f_arr.words_result.姓名.words);	//正面信息
+				$('#res_sex').text(res_f_arr.words_result.性别.words);
+				$('#res_bera').text(res_f_arr.words_result.出生.words);
+				$('#res_nation').text(res_f_arr.words_result.民族.words);
+				$('#res_address').text(res_f_arr.words_result.住址.words);
+				$('#res_cardNumber').text(res_f_arr.words_result.公民身份号码.words);
+				$('#res_start').text(res_b_arr.words_result.签发日期.words);		//背面信息
+				$('#res_end').text(res_b_arr.words_result.失效日期.words);
+				$('#res_office').text(res_b_arr.words_result.签发机关.words);
+			});
+		</script>
+		<script type="text/javascript">
+
+			// 初始化变量
+			var audio = null;
+			var playBtn = null;
+
+			// dom加载完毕回调后注册按钮对象
+			ready(function() {
+				playBtn = document.getElementById('playBtn');
+			});
+
+			// 合成按钮
+			function tts() {
+				//var text = document.getElementById('read').value;
+				var text = document.getElementById('read').innerText;
+				playBtn.innerText = '准备中';
+
+				// 调用语音合成接口
+				// 参数含义请参考 https://ai.baidu.com/docs#/TTS-API/41ac79a6
+				audio = btts({
+					tex: text,
+					tok: '24.37f98268e34a863019552351c84bd3e0.2592000.1584005182.282335-18441142',
+					spd: 5,// 表示朗读的语速，9代表最快，1是最慢
+					pit: 5,
+					vol: 15,//音量大小
+					per: 4
+				}, {
+					volume: 0.3,
+					autoDestory: true,
+					timeout: 10000,
+					hidden: false,
+					onInit: function (htmlAudioElement) {
+
+					},
+					onSuccess: function(htmlAudioElement) {
+						audio = htmlAudioElement;
+						playBtn.innerText = '播放';
+					},
+					onError: function(text) {
+						alert(text)
+					},
+					onTimeout: function () {
+						alert('timeout')
+					}
+				});
+			}
+
+			// 播放按钮
+			function play() {
+				if (audio === null) {
+					alert('请先点击合成')
+				} else {
+					audio.play();
+				}
+			}
+
+			// 暂停按钮
+			function pause() {
+				if (audio === null) {
+					alert('请先点击合成')
+				} else {
+					audio.pause();
+				}
+			}
+
+			// 取消按钮
+			function cancel() {
+				if (audio === null) {
+					alert('请先点击合成')
+				} else {
+					audio.pause();
+					document.body.removeChild(audio);
+					audio = null;
+					playBtn.innerText = '准备中';
+				}
+				tts();
+			}
+
+			// dom加载完毕回调
+			function ready(callback){
+				var doc = document;
+				if (doc.addEventListener) {
+					doc.addEventListener('DOMContentLoaded', function() {
+						callback();
+					}, false);
+				} else if (doc.attachEvent) {
+					doc.attachEvent('onreadystatechange', function() {
+						if (doc.readyState === 'complete') {
+							callback();
+						}
+					});
+				}
+			}
+			function download(){
+				location.href = '/download'
+
+			}
+
+			function selectFileImage(fileObj) {
+				console.log("aaaa")
+				var file = fileObj.files['0'];
+				//图片方向角 added by lzk
+				var Orientation = null;
+
+				if (file) {
+					console.log("正在上传,请稍后...");
+					var rFilter = /^(image\/jpeg|image\/png)$/i; // 检查图片格式
+					if (!rFilter.test(file.type)) {
+						console.log("bbb")
+						//showMyTips("请选择jpeg、png格式的图片", false);
+						return;
+					}
+					// var URL = URL || webkitURL;
+					//获取照片方向角属性，用户旋转控制
+					EXIF.getData(file, function() {
+						// alert(EXIF.pretty(this));
+						console.log(EXIF.pretty(this))
+						EXIF.getAllTags(this);
+						//alert(EXIF.getTag(this, 'Orientation'));
+						Orientation = EXIF.getTag(this, 'Orientation');
+						//return;
+					});
+
+					var oReader = new FileReader();
+					oReader.onload = function(e) {
+						//var blob = URL.createObjectURL(file);
+						//_compress(blob, file, basePath);
+						var image = new Image();
+						image.src = e.target.result;
+						image.onload = function() {
+							var expectWidth = this.naturalWidth;
+							var expectHeight = this.naturalHeight;
+
+							if (this.naturalWidth > this.naturalHeight && this.naturalWidth > 800) {
+								expectWidth = 800;
+								expectHeight = expectWidth * this.naturalHeight / this.naturalWidth;
+							} else if (this.naturalHeight > this.naturalWidth && this.naturalHeight > 1200) {
+								expectHeight = 1200;
+								expectWidth = expectHeight * this.naturalWidth / this.naturalHeight;
+							}
+							var canvas = document.createElement("canvas");
+							var ctx = canvas.getContext("2d");
+							canvas.width = expectWidth;
+							canvas.height = expectHeight;
+							ctx.drawImage(this, 0, 0, expectWidth, expectHeight);
+							var base64 = null;
+							//修复ios
+							if (navigator.userAgent.match(/iphone/i)) {
+								console.log('iphone');
+								//alert(expectWidth + ',' + expectHeight);
+								//如果方向角不为1，都需要进行旋转 added by lzk
+								if(Orientation != "" && Orientation != 1){
+									alert('旋转处理');
+									switch(Orientation){
+										case 6://需要顺时针（向左）90度旋转
+											alert('需要顺时针（向左）90度旋转');
+											rotateImg(this,'left',canvas);
+											break;
+										case 8://需要逆时针（向右）90度旋转
+											alert('需要顺时针（向右）90度旋转');
+											rotateImg(this,'right',canvas);
+											break;
+										case 3://需要180度旋转
+											alert('需要180度旋转');
+											rotateImg(this,'right',canvas);//转两次
+											rotateImg(this,'right',canvas);
+											break;
+									}
+								}
+
+								/*var mpImg = new MegaPixImage(image);
+                                mpImg.render(canvas, {
+                                    maxWidth: 800,
+                                    maxHeight: 1200,
+                                    quality: 0.8,
+                                    orientation: 8
+                                });*/
+								base64 = canvas.toDataURL("image/jpeg", 0.8);
+							}else if (navigator.userAgent.match(/Android/i)) {// 修复android
+								console.log("安卓");
+								var encoder = new JPEGEncoder();
+								base64 = encoder.encode(ctx.getImageData(0, 0, expectWidth, expectHeight), 80);
+							}else{
+								//alert(Orientation);
+								if(Orientation != "" && Orientation != 1){
+									//alert('旋转处理');
+									alert('旋转处理');
+									switch(Orientation){
+										case 6://需要顺时针（向左）90度旋转
+											alert('需要顺时针（向左）90度旋转');
+											rotateImg(this,'left',canvas);
+											break;
+										case 8://需要逆时针（向右）90度旋转
+											alert('需要顺时针（向右）90度旋转');
+											rotateImg(this,'right',canvas);
+											break;
+										case 3://需要180度旋转
+											alert('需要180度旋转');
+											rotateImg(this,'right',canvas);//转两次
+											rotateImg(this,'right',canvas);
+											break;
+									}
+								}
+
+								base64 = canvas.toDataURL("image/jpeg", 0.8);
+							}
+							//uploadImage(base64);
+							$("#myImage").attr("src", base64);
+						};
+					};
+					oReader.readAsDataURL(file);
+				}
+			}
+
+			//对图片旋转处理 added by lzk www.bcty365.com
+			function rotateImg(img, direction,canvas) {
+				//alert(img);
+				//最小与最大旋转方向，图片旋转4次后回到原方向
+				var min_step = 0;
+				var max_step = 3;
+				//var img = document.getElementById(pid);
+				if (img == null)return;
+				//img的高度和宽度不能在img元素隐藏后获取，否则会出错
+				var height = img.height;
+				var width = img.width;
+				//var step = img.getAttribute('step');
+				var step = 2;
+				if (step == null) {
+					step = min_step;
+				}
+				if (direction == 'right') {
+					step++;
+					//旋转到原位置，即超过最大值
+					step > max_step && (step = min_step);
+				} else {
+					step--;
+					step < min_step && (step = max_step);
+				}
+				//img.setAttribute('step', step);
+				/*var canvas = document.getElementById('pic_' + pid);
+                if (canvas == null) {
+                    img.style.display = 'none';
+                    canvas = document.createElement('canvas');
+                    canvas.setAttribute('id', 'pic_' + pid);
+                    img.parentNode.appendChild(canvas);
+                }  */
+				//旋转角度以弧度值为参数
+				var degree = step * 90 * Math.PI / 180;
+				var ctx = canvas.getContext('2d');
+				switch (step) {
+					case 0:
+						canvas.width = width;
+						canvas.height = height;
+						ctx.drawImage(img, 0, 0);
+						break;
+					case 1:
+						canvas.width = height;
+						canvas.height = width;
+						ctx.rotate(degree);
+						ctx.drawImage(img, 0, -height);
+						break;
+					case 2:
+						canvas.width = width;
+						canvas.height = height;
+						ctx.rotate(degree);
+						ctx.drawImage(img, -width, -height);
+						break;
+					case 3:
+						canvas.width = height;
+						canvas.height = width;
+						ctx.rotate(degree);
+						ctx.drawImage(img, -width, 0);
+						break;
+				}
+			}
+		</script>
+	</body>
+	<!-- 有道翻译 语言代码 -->
+		<!--
+有道翻译支持的语言代码
+语言	代码
+中文	zh-CHS
+英文	en
+日文	ja
+韩文	ko
+法文	fr
+西班牙文	es
+葡萄牙文	pt
+意大利文	it
+俄文	ru
+越南文	vi
+德文	de
+阿拉伯文	ar
+印尼文	id
+南非荷兰语	af
+波斯尼亚语	bs
+保加利亚语	bg
+粤语	yue
+加泰隆语	ca
+克罗地亚语	hr
+捷克语	cs
+丹麦语	da
+荷兰语	nl
+爱沙尼亚语	et
+斐济语	fj
+芬兰语	fi
+希腊语	el
+海地克里奥尔语	ht
+希伯来语	he
+印地语	hi
+白苗语	mww
+匈牙利语	hu
+斯瓦希里语	sw
+克林贡语	tlh
+拉脱维亚语	lv
+立陶宛语	lt
+马来语	ms
+马耳他语	mt
+挪威语	no
+波斯语	fa
+波兰语	pl
+克雷塔罗奥托米语	otq
+罗马尼亚语	ro
+塞尔维亚语(西里尔文)	sr-Cyrl
+塞尔维亚语(拉丁文)	sr-Latn
+斯洛伐克语	sk
+斯洛文尼亚语	sl
+瑞典语	sv
+塔希提语	ty
+泰语	th
+汤加语	to
+土耳其语	tr
+乌克兰语	uk
+乌尔都语	ur
+威尔士语	cy
+尤卡坦玛雅语	yua
+阿尔巴尼亚语	sq
+阿姆哈拉语	am
+亚美尼亚语	hy
+阿塞拜疆语	az
+孟加拉语	bn
+巴斯克语	eu
+白俄罗斯语	be
+宿务语	ceb
+科西嘉语	co
+世界语	eo
+菲律宾语	tl
+弗里西语	fy
+加利西亚语	gl
+格鲁吉亚语	ka
+古吉拉特语	gu
+豪萨语	ha
+夏威夷语	haw
+冰岛语	is
+伊博语	ig
+爱尔兰语	ga
+爪哇语	jw
+卡纳达语	kn
+哈萨克语	kk
+高棉语	km
+库尔德语	ku
+柯尔克孜语	ky
+老挝语	lo
+拉丁语	la
+卢森堡语	lb
+马其顿语	mk
+马尔加什语	mg
+马拉雅拉姆语	ml
+毛利语	mi
+马拉地语	mr
+蒙古语	mn
+缅甸语	my
+尼泊尔语	ne
+齐切瓦语	ny
+普什图语	ps
+旁遮普语	pa
+萨摩亚语	sm
+苏格兰盖尔语	gd
+塞索托语	st
+修纳语	sn
+信德语	sd
+僧伽罗语	si
+索马里语	so
+巽他语	su
+塔吉克语	tg
+泰米尔语	ta
+泰卢固语	te
+乌兹别克语	uz
+南非科萨语	xh
+意第绪语	yi
+约鲁巴语	yo
+南非祖鲁语	zu
+自动识别	auto
+其中auto可以识别中文、英文、日文、韩文、法文、西班牙文、葡萄牙文、俄文、越南文、德文、阿拉伯文、印尼文、意大利文，其他语种无法识别，为提高准确率，请指定语种。
+
+-->
+</html>
